@@ -5,41 +5,74 @@ function Territory(name, units){
 
 Territory.prototype.attack = function(){
   if(this.units > 2) {
-    return [throwDice(), throwDice(), throwDice()]; //choseMax()
+    return attackChoose(); //Lanza 3 dados y devuelve los 2 resultados mayores
   } else if (this.units === 2) {
-    return [throwDice(), throwDice()]; //ordenarTirada()
+    return defenseChoose(); //Como en este caso sólo lanzamos 2 dados, usamos la misma función que para defender
   } else {
-    return "You cannot attack with just 1 army!";
+    return "You cannot attack with just 1 unit!";
   }
 };
 
-Territory.prototype.defend = function(damage){
+Territory.prototype.defend = function(){
   if (this.units > 1) {
-    return [throwDice(), throwDice()];
+    return defenseChoose();
   } else {
     return [throwDice()];
   }
 };
 
-Territory.prototype.battleResult = function(){
-  //Restar dados y quitar armies del atacante o defensor, según corresponda
+Territory.prototype.receiveDamage = function () {
+  this.units -= 1;
 };
 
+Territory.prototype.battleResult = function(){
+  if (this.attack > this.defend){
+
+  }
+  //Restar dados y quitar units del atacante o defensor, según corresponda
+};
+
+// HASTA AQUÍ EL CONSTRUCTOR DE TERRITORIOS //
+
+// AQUÍ EMPIEZO A CONSTRUIR TERRITORIOS //
+function Mordor (name, units) {
+  this.name = name;
+  Territory.call(this, name, units);
+}
+
+Mordor.prototype = Object.create(Territory.prototype);
+Mordor.prototype.constructor = Mordor;
+
+
+
+
+
+
+
+
+
+
+
+
+// A PARTIR DE AQUÍ FUNCIONES AUXILIARES //
 
 function throwDice() {
   return Math.floor(Math.random() * 6) + 1;
 }
 
-function attackChose() {
-  Aqui tienes que recoger las tres lanzadas y ordenarlas por orden ascendente.
-  Eliminas la de menor valor.
-  Devuelves un array con 2 elementos.
-  //throwDice() x3
-  //[throwDice(), throwDice(), throwDice()]; --> Ordenar, elimar la ultima posición y devuelves.
+function attackChoose() {
+  var tiradas = [throwDice(), throwDice(), throwDice()];
+  tiradas.sort(function(a, b){
+    return b - a;
+  });
+  tiradas.pop();
+  return tiradas;
 }
 
-function defenseChose() {
-  Aqui tienes ordenar los dos resultados de jugador que defiende.
-  // [throwDice(), throwDice()] --> Ordenas y devuelves.
-
+function defenseChoose() {
+  var tiradas = [throwDice(), throwDice()];
+  tiradas.sort(function(a, b){
+    return b - a;
+  });
+  return tiradas;
 }
