@@ -1,0 +1,16 @@
+#territorio-1 {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 0, 0, 0.5);
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 10px;
+}
+
+#territorio-2 {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 255, 0, 0.5);
+  display: inline-block;
+  margin: 10px;
+}
