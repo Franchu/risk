@@ -30,7 +30,23 @@ Territory.prototype.attack = function(dice) {
   return this._rollResult(dice, nDices);
 };
 
-Territory.prototype.defend = function(dice, damage){
+Territory.prototype.defend = function(dice, enemy){
+  console.log("Attacking units: "+enemy.units,"- Defending units: "+this.units);
   var nDices = this._defendDices();
   var defenseResult = this._rollResult(dice, nDices);
+  var attackResult = enemy.attack(dice);
+  var that = this;
+  defenseResult.forEach(function(c,i){
+    if (attackResult[i] > defenseResult[i]) {
+      //Unidades de Defensa
+      that.units -= 1;
+      console.log(attackResult[i] +" - "+defenseResult[i]);
+      console.log("Attacking units: "+enemy.units,"- Defending units: "+that.units);
+    } else {
+      //Unidades de Ataque
+      enemy.units -= 1;
+      console.log(attackResult[i] +" - "+defenseResult[i]);
+      console.log("Attacking units: "+enemy.units,"- Defending units: "+that.units);
+    }
+  });
 };

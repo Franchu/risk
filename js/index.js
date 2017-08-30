@@ -3,5 +3,6 @@ var mordor = new Territory('Mordor', 4);
 var rohan = new Territory('Rohan', 3);
 
 $(document).ready(function(){
-  
+  var ataque = mordor.attack(dice);
+  rohan.defend(dice, mordor);
 });
