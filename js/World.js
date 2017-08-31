@@ -8,7 +8,13 @@ World.prototype.createTerritory = function(territoryName, units) {
 };
 
 World.prototype.getTerritoryName = function(selectedTerritory) {
-  this.selectedTerritories.push(selectedTerritory.attr('id'));
+  if (this.selectedTerritories.length < 2) {
+    this.selectedTerritories.push(selectedTerritory.attr('id'));
+  } else {
+    this.selectedTerritories = [];
+    this.selectedTerritories.push(selectedTerritory.attr('id'));
+  }
+
 };
 
 World.prototype.resolveCombat = function() {
