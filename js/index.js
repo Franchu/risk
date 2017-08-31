@@ -1,8 +1,16 @@
 var dice = new Dice(6);
-var mordor = new Territory('Mordor', 4);
-var rohan = new Territory('Rohan', 3);
+var world = new World();
 
-$(document).ready(function(){
-  var ataque = mordor.attack(dice);
-  rohan.defend(dice, mordor);
+$(document).ready(function() {
+  world.createTerritory('mordor', 6);
+  world.createTerritory('rohan', 3);
+  world.createTerritory('shire', 2);
+  world.createTerritory('gondor', 5);
+  world.createTerritory('rivendel', 3);
+
+  $('.territory').on('click', function() {
+    world.getTerritoryName($(this));
+    world.resolveCombat();
+    console.log(world.selectedTerritories);
+  });
 });

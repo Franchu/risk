@@ -1,7 +1,17 @@
 function Territory(name, units){
   this.name = name;
   this.units = units;
+  this.initRender();
 }
+
+Territory.prototype.initRender = function () {
+  // $('<div>').attr('class', 'territory').html(this.name +" "+ this.units).appendTo('body');
+  var $territory = $('<div>').addClass('territory').attr('id', this.name);
+  var $title = $('<h1>').html(this.name);
+  var $units = $('<p>').html(this.units);
+  $territory.append($title).append($units);
+  $('body').append($territory);
+};
 
 Territory.prototype.canAttack = function () {
   return this.units > 1;
