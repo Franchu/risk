@@ -1,15 +1,65 @@
-.territory {
-  width: 200px;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid rgba(255, 0, 0, 0.5);
-  display: inline-block;
+body {
+  background-image: url(../assets/background-opt.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
 }
 
-#rohan {
-  background-color: rgba(255, 0, 0, 0.5);
+h1 {
+  display: none;
+}
+
+.territory-units {
+  font-weight: 700;
+  font-size: 6em;
+  display: inline;
+}
+.score {
+  position: relative;
+  top: 77vh;
+  left: 1vw;
+  width: 22vw;
+  height: 22vh;
+  background-color: rgba(255,255,255,0.4);
+}
+
+.territory {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 #mordor {
-  background-color: rgba(0, 255, 0, 0.5);
+  width: 22vw;
+  height: 21vh;
+  top: 57vh;
+  left: 69vw;
+}
+
+#rohan {
+  width: 18vw;
+  height: 19vh;
+  top: 17vh;
+  left: 42vw;
+}
+
+#shire {
+  width: 18vw;
+  height: 19vh;
+  top: -43vh;
+  left: 19vw;
+}
+
+#gondor {
+  width: 18vw;
+  height: 19vh;
+  top: -1vh;
+  left: 43vw;
+}
+
+#rivendel {
+  width: 18vw;
+  height: 19vh;
+  top: -83vh;
+  left: 41vw;
 }

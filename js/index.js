@@ -11,6 +11,5 @@ $(document).ready(function() {
   $('.territory').on('click', function() {
     world.getTerritoryName($(this));
     world.resolveCombat();
-    console.log(world.selectedTerritories);
   });
 });
